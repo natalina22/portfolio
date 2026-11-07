@@ -1,8 +1,6 @@
 
 function setLanguage(lang) {
-
     const data = {
-
         en: {
             navHome: "Home",
             navAbout: "About",
@@ -17,7 +15,13 @@ function setLanguage(lang) {
             cvBtn: "Download CV",
 
             aboutTitle: "About Me",
-            aboutText: "Natalina Santa Lucia Sihite is a final-year Informatics Engineering student with interests in Computer Vision, Internet of Things (IoT), Networking, Artificial Intelligence, and Web Development. Throughout her academic journey, she has developed projects ranging from web applications and networking simulations to embedded systems and IoT-based automation. Her undergraduate research focuses on developing a Smart Clothesline System using Convolutional Neural Networks (CNN) and ESP32-CAM technology for visual weather classification. She continuously improves her technical expertise through research, practical projects, and technology innovation.",
+            aboutText: `Natalina Santa Lucia Sihite is a final-year Informatics Engineering student with interests in Computer Vision, Internet of Things (IoT), Networking, Artificial Intelligence, and Web Development.
+
+Throughout her academic journey, she has developed projects ranging from web applications and networking simulations to embedded systems and IoT-based automation.
+
+Her undergraduate research focuses on developing a Smart Clothesline System using Convolutional Neural Networks (CNN) and ESP32-CAM technology for visual weather classification.
+
+She continuously improves her technical expertise through research, practical projects, and technology innovation.`,
 
             statProjects: "Projects",
             statThesis: "Research Thesis",
@@ -78,7 +82,13 @@ function setLanguage(lang) {
             cvBtn: "Unduh CV",
 
             aboutTitle: "Tentang Saya",
-            aboutText: "Saya adalah Natalina Santa Lucia Sihite, mahasiswa tingkat akhir Teknik Informatika yang memiliki minat pada Computer Vision, Internet of Things (IoT), Networking, Artificial Intelligence, dan Web Development. Selama masa perkuliahan, saya telah mengembangkan berbagai proyek mulai dari aplikasi web, simulasi jaringan, hingga sistem embedded dan otomasi berbasis IoT. Penelitian skripsi saya berfokus pada pengembangan sistem jemuran pintar menggunakan Convolutional Neural Network (CNN) dan ESP32-CAM untuk klasifikasi cuaca visual. Saya terus mengembangkan kemampuan teknis melalui penelitian, proyek nyata, dan inovasi teknologi.",
+            aboutText: `Saya adalah Natalina Santa Lucia Sihite, mahasiswa tingkat akhir Teknik Informatika yang memiliki minat pada Computer Vision, Internet of Things (IoT), Networking, Artificial Intelligence, dan Web Development.
+
+Selama masa perkuliahan, saya telah mengembangkan berbagai proyek mulai dari aplikasi web, simulasi jaringan, hingga sistem embedded dan otomasi berbasis IoT.
+
+Penelitian skripsi saya berfokus pada pengembangan sistem jemuran pintar menggunakan Convolutional Neural Network (CNN) dan ESP32-CAM untuk klasifikasi cuaca visual.
+
+Saya terus mengembangkan kemampuan teknis melalui penelitian, proyek nyata, dan inovasi teknologi.`,
 
             statProjects: "Proyek",
             statThesis: "Penelitian Skripsi",
@@ -128,7 +138,7 @@ function setLanguage(lang) {
         zh: {
             navHome: "首页",
             navAbout: "关于我",
-            navSkills: "技能",
+            navSkills: "专业技能",
             navProjects: "项目",
             navJourney: "学习经历",
             navContact: "联系方式",
@@ -139,7 +149,13 @@ function setLanguage(lang) {
             cvBtn: "下载简历",
 
             aboutTitle: "关于我",
-            aboutText: "我叫 Natalina Santa Lucia Sihite，是一名信息工程专业高年级学生。我对计算机视觉、物联网、网络技术、人工智能和网页开发非常感兴趣。在大学期间，我参与了多个项目，包括网页开发、网络模拟、嵌入式系统以及物联网自动化系统。目前我的毕业论文研究基于 CNN 与 ESP32-CAM 技术的智能晾衣系统，用于视觉天气分类。我持续通过研究与实践项目提升自己的技术能力。",
+            aboutText: `我叫 Natalina Santa Lucia Sihite，是一名信息工程专业高年级学生。我对计算机视觉、物联网、网络技术、人工智能和网页开发非常感兴趣。
+
+在大学期间，我参与了多个项目，包括网页开发、网络模拟、嵌入式系统以及物联网自动化系统。
+
+我的毕业论文研究基于卷积神经网络（CNN）和 ESP32-CAM 技术的智能晾衣系统，用于视觉天气分类。
+
+我持续通过研究和实践项目提升自己的技术能力。`,
 
             statProjects: "项目",
             statThesis: "毕业论文",
@@ -185,17 +201,13 @@ function setLanguage(lang) {
             researchTitle: "研究方向",
             contactTitle: "联系方式"
         }
-
     };
 
     const t = data[lang];
-
     if (!t) return;
 
-    // Update page language
     document.documentElement.lang = lang;
 
-    // Update ordinary HTML elements
     const elements = {
         "nav-home": t.navHome,
         "nav-about": t.navAbout,
@@ -260,26 +272,21 @@ function setLanguage(lang) {
         const element = document.getElementById(id);
 
         if (element && value !== undefined) {
-            element.innerText = value;
+            element.textContent = value;
         }
     });
 
-    // Update publication status without removing its check icon
-    const publicationStatus = document.getElementById("publication-status");
+    // Preserve the publication check icon
+    const status = document.getElementById("publication-status");
 
-    if (publicationStatus) {
-        const textNode = Array.from(publicationStatus.childNodes)
+    if (status) {
+        const textNode = Array.from(status.childNodes)
             .find(node => node.nodeType === Node.TEXT_NODE);
 
         if (textNode) {
-            textNode.nodeValue = "\n" + t.publicationStatus + "\n";
-        } else {
-            publicationStatus.appendChild(
-                document.createTextNode(t.publicationStatus)
-            );
+            textNode.nodeValue = " " + t.publicationStatus;
         }
     }
-
 }
 
 // Default language
