@@ -237,7 +237,6 @@ Saya terus mengembangkan kemampuan teknis melalui penelitian, proyek nyata, dan 
 
         "project2-title": t.project2Title,
         "project2-desc": t.project2Desc,
-        "project2-link": t.project2Link,
 
         "project3-title": t.project3Title,
         "project3-desc": t.project3Desc,
@@ -275,6 +274,12 @@ Saya terus mengembangkan kemampuan teknis melalui penelitian, proyek nyata, dan 
             element.textContent = value;
         }
     });
+
+    // Update only the link label so the website icon remains visible
+    const project2LinkLabel = document.querySelector("#project2-link span");
+    if (project2LinkLabel) {
+        project2LinkLabel.textContent = t.project2Link.replace(/\s*→\s*$/, "");
+    }
 
     // Preserve the publication check icon
     const status = document.getElementById("publication-status");
